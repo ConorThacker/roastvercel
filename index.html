@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conor's Crypto Roaster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00ff41;
+            --background-color: #000;
+            --glow-color: rgba(0, 255, 65, 0.75);
+            --error-color: #ff4141;
+            --error-glow-color: rgba(255, 65, 65, 0.75);
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            font-family: 'VT323', monospace;
+            margin: 0;
+            padding: 2rem;
+            text-shadow: 0 0 5px var(--glow-color);
+            overscroll-behavior: none;
+        }
+
+        #root {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: calc(100vh - 4rem);
+        }
+        
+        ::selection {
+            background: var(--primary-color);
+            color: var(--background-color);
+            text-shadow: none;
+        }
+
+        /* Scanlines effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 1000;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* Arweave Wallet Kit Custom Styling */
+        .arkit-modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+            backdrop-filter: blur(5px);
+        }
+        .arkit-modal-container {
+             background-color: #0a0a0a !important;
+             border: 1px solid var(--primary-color) !important;
+             box-shadow: 0 0 15px var(--glow-color) !important;
+             color: var(--primary-color) !important;
+             font-family: 'VT323', monospace !important;
+        }
+        .arkit-modal-container h1, .arkit-modal-container p, .arkit-modal-container div {
+             font-family: 'VT323', monospace !important;
+             color: var(--primary-color) !important;
+        }
+        .arkit-wallet-list > div:hover {
+            background-color: rgba(0, 255, 65, 0.1) !important;
+        }
+        .arkit-button, .arkit-profile-button {
+            background-color: transparent !important;
+            border: 1px solid var(--primary-color) !important;
+            color: var(--primary-color) !important;
+            font-family: 'VT323', monospace !important;
+            font-size: 1.2rem !important;
+            text-transform: uppercase !important;
+            box-shadow: 0 0 5px var(--glow-color) !important;
+            transition: all 0.2s ease-in-out !important;
+            padding: 0.75rem 1.5rem !important;
+            height: auto !important;
+            text-shadow: inherit !important;
+        }
+        .arkit-button:hover, .arkit-profile-button:hover {
+            background-color: var(--primary-color) !important;
+            color: var(--background-color) !important;
+            box-shadow: 0 0 10px var(--glow-color) !important;
+            text-shadow: none !important;
+        }
+        .arkit-profile-address {
+            color: var(--primary-color) !important;
+            font-family: 'VT323', monospace !important;
+            font-size: 1.2rem !important;
+        }
+        .arkit-profile-disconnect {
+            color: var(--error-color) !important;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .blinking-cursor {
+            animation: blink 1s step-start 0s infinite;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.11.0",
+    "@permaweb/aoconnect": "https://esm.sh/@permaweb/aoconnect@^0.0.85",
+    "arweave-wallet-kit": "https://esm.sh/arweave-wallet-kit@^1.1.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
